@@ -1,5 +1,8 @@
 import { useState } from "react";
+
+// import other components
 import TicketType from "./TicketType";
+import TicketForm from "./TicketForm";
 
 const TicketSelection = () => {
   const [ticketType, setTicketType] = useState("");
@@ -15,21 +18,19 @@ const TicketSelection = () => {
 
   return (
     <div
-      className="justify-center items-center mt-10 w-[100%] bg-[#08252B] ms:bg-[#041E23]
-     p-[24px] border-[#197686] border-[1px] ms:w-[60%] md:w-[50%] md:p-[48px] rounded-2xl space-x-10 space-y-5"
+      className="items-center mt-10 w-[100%] bg-[#08252B] ms:bg-[#041E23]
+     p-[24px] border-[#197686] border-[1px] ms:w-[60%] md:w-[55%] md:p-[48px] rounded-2xl space-x-10 space-y-6"
     >
-      <section className="flex flex-col justify-center items-center space-y-3">
+      <section className="flex-col justify-center items-center space-y-3">
         <div className="text-white md:flex md:justify-between md:items-center">
-          <h1 className="text-[24px] md:text-[32px] sm:text-3xl  text-white">
-            Ticket Selection{" "}
-            <span>
-              <p className="text-gray-300 mt-2 flex flex-wrap-reverse flex-row ml-96">
-                Step 1/3
-              </p>
-            </span>
+          <h1 className="text-[24px] md:text-[32px] sm:text-3xl  text-white font-mono">
+            Ticket Selection
           </h1>
+          <span>
+            <p className="text-gray-300 mt-2 flex-row ml-96">Step 1/3</p>
+          </span>
         </div>
-        <div className="bg-[#0ab4ce] h-[4px] rounded-sm w-[100%]"></div>
+        <div className="bg-[#0e464f] h-[4px] rounded-sm w-[100%]"></div>
       </section>
 
       <div
@@ -50,13 +51,14 @@ const TicketSelection = () => {
           📍 [Event Location] || March 15, 2025 | 7:00 PM{" "}
         </p>
       </div>
+
       <hr className="bg-[#07373F] h-[4px] rounded-sm" />
 
       <div className="text-white font-roboto">
         <p className="text-lg text-white mb-4">Select Ticket Type:</p>
       </div>
 
-      <div className="w-full sm:w-[556p] h-[142px] border rounded-[24px] flex flex-col gap-4 p-4 mb-20">
+      <div className="w-full sm:w-[556p] h-[142px] border rounded-[24px] flex flex-col gap-4 p-4 mb-20 justify-center items-center">
         <TicketType />
 
         {/* <div className="flex flex-row gap-4">
@@ -85,6 +87,13 @@ const TicketSelection = () => {
         </div> */}
       </div>
 
+      <div className="items-center justify-center w-full">
+        <TicketForm
+          numTickets={numTickets}
+          handleNumTicketsChange={handleNumTicketsChange}
+        />
+      </div>
+
       {/* <label className="w-[158px] h-[110px] border rounded-lg flex flex-col gap-3 p-3 bg-[#12464E] border-[#197686] ">
             Free - REGULAR ACCESS 20/92
           </label>
@@ -109,33 +118,20 @@ const TicketSelection = () => {
             $150 - VIP ACCESS 20/92
           </label>
         */}
-      <div>
-        <div className="text-white h-12 p-5 flex flex-col items-center  gap-2 justify-center sm:w-[556px]">
-          <label className="text-white font-roboto-regular font-normal text-base leading-6 tracking-normal justify-start">
-            Number of Tickets
-          </label>
-        </div>
 
-        <input
-          type="number"
-          value={numTickets}
-          onChange={handleNumTicketsChange}
-          min="1"
-          className="w-full h-full bg-transparent text-white placeholder-gray-400 focus:outline-none mb-15"
-          defaultValue="1"
-        />
-      </div>
-      <div className="flex flex-row ">
+      <div className="flex flex-row space-x-20 justify-center items-center">
         <button
-          className="w-full sm:w-[266px] h-12 border rounder-lg pt-3 pr-4 pb-3 pl-4 flex items-center
+          className="w-full sm:w-[266px] h-12 border rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center
         justify-center gap2 border-[#24A0B5] bg-transparent text-[#24a0b5] hover:bg-[#24A0B5]
-        hover:text-white transiton-all
+        hover:text-white transiton-all cursor-pointer
         "
         >
-          <span className="text-base font-medium">Cancel</span>
+          <span className="text-base font-medium font-mono">Cancel</span>
         </button>
-        <button className="w-full sm:w-[266px] h-12 rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center justify-center gap-2 border border-[#07373F] bg-[#07373F] text-white hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-all">
-          <span className="text-base font-medium"> Next</span>
+        <button className="cursor-pointer w-full sm:w-[266px] h-12 rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center justify-center gap-2 border border-[#07373F] bg-[#24A0B5] text-white hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-all">
+          <span className="text-base font-medium font-mono text-[#ffffff]">
+            Next
+          </span>
         </button>
       </div>
     </div>
