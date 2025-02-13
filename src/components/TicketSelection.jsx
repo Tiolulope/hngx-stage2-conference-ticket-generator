@@ -1,20 +1,26 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ReadyTicket from "./ReadyTicket";
 
 // import other components
 import TicketType from "./TicketType";
 import TicketForm from "./TicketForm";
+import { useTicket } from "./TicketContext";
 
 const TicketSelection = () => {
-  const [ticketType, setTicketType] = useState("");
-  const [numTickets, setNumTickets] = useState(1);
+  // const [ticketType, setTicketType] = useState("");
+  // const [numTickets, setNumTickets] = useState(1);
 
-  const handleTicketTypeChange = (e) => {
-    setTicketType(e.target.value);
-  };
+  // const handleTicketTypeChange = (e) => {
+  //   setTicketType(e.target.value);
+  // };
 
-  const handleNumTicketsChange = (e) => {
-    setNumTickets(e.target.value);
-  };
+  // const handleNumTicketsChange = (e) => {
+  //   setNumTickets(e.target.value);
+  // };
+
+  const navigate = useNavigate();
+  const { ticketType, setTicketType, numTickets, setNumTickets } = useTicket();
 
   return (
     <div className="w-full max-w-4xl bg-[#08252B] p-6 md:p-10 border border-[#197686] rounded-2xl flex flex-col items-center space-x-6">
@@ -23,13 +29,12 @@ const TicketSelection = () => {
           <h1 className="text-2xl md:text-3xl sm:text-3xl font-mono">
             Ticket Selection
           </h1>
-
           <span>
             <p className="text-gray-300 mt-2 md:mt-0">Step 1/3</p>
           </span>
         </div>
 
-        <div className="w-full bg-[#0c9fb6] h-[4px] rounded-sm mb-10"></div>
+        <div className="w-[100%] bg-[#0c9fb6] h-[4px] rounded-sm mb-10"></div>
       </section>
 
       <div
@@ -63,8 +68,10 @@ const TicketSelection = () => {
 
       <div className="w-full flex justify-center">
         <TicketForm
+          // numTickets={numTickets}
+          // handleNumTicketsChange={handleNumTicketsChange}
+          setNumTickets={setNumTickets}
           numTickets={numTickets}
-          handleNumTicketsChange={handleNumTicketsChange}
         />
       </div>
 
@@ -93,11 +100,16 @@ const TicketSelection = () => {
           </label>
         */}
 
+      {ticketType && <ReadyTicket />}
+
       <div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-10 justify-center">
         <button className="w-full sm:w-1/2 h-12 border rounded-lg flex items-center justify-center text-[#24A0B5] border-[#24A0B5] bg-transparent hover:bg-[#24A0B5] hover:text-white transition-all">
           <span className="text-base font-medium font-mono">Cancel</span>
         </button>
-        <button className="w-full sm:w-1/2 h-12 rounded-lg flex items-center justify-center bg-[#24A0B5] text-white border border-[#07373F] hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-al">
+        <button
+          onClick={() => navigate("/attendee-details")}
+          className="w-full sm:w-1/2 h-12 rounded-lg flex items-center justify-center bg-[#24A0B5] text-white border border-[#07373F] hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-al"
+        >
           <span className="text-base font-medium font-mono text-[#ffffff]">
             Next
           </span>
