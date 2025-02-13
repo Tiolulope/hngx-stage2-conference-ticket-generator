@@ -17,77 +17,51 @@ const TicketSelection = () => {
   };
 
   return (
-    <div
-      className="items-center mt-10 w-[100%] bg-[#08252B] ms:bg-[#041E23]
-     p-[24px] border-[#197686] border-[1px] ms:w-[60%] md:w-[55%] md:p-[48px] rounded-2xl space-x-10 space-y-6"
-    >
-      <section className="flex-col justify-center items-center space-y-3">
-        <div className="text-white md:flex md:justify-between md:items-center">
-          <h1 className="text-[24px] md:text-[32px] sm:text-3xl  text-white font-mono">
+    <div className="w-full max-w-4xl bg-[#08252B] p-6 md:p-10 border border-[#197686] rounded-2xl flex flex-col items-center space-x-6">
+      <section className="">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center text-white space-x-9">
+          <h1 className="text-2xl md:text-3xl sm:text-3xl font-mono">
             Ticket Selection
           </h1>
+
           <span>
-            <p className="text-gray-300 mt-2 flex-row ml-96">Step 1/3</p>
+            <p className="text-gray-300 mt-2 md:mt-0">Step 1/3</p>
           </span>
         </div>
-        <div className="bg-[#0e464f] h-[4px] rounded-sm w-[100%]"></div>
+
+        <div className="w-full bg-[#0c9fb6] h-[4px] rounded-sm mb-10"></div>
       </section>
 
       <div
-        className="banner min-h-[243px]  p-[10px] md:p-[24px] text-white text-center text-[14px] flex-col justify-center items-center space-y-4"
+        className="w-full text-white text-center p-4 md:p-6 rounded-lg"
         style={{
           background:
             "linear-gradient(0deg, rgba(10, 12, 17, 0.1), rgba(10, 12, 17, 0.1)), radial-gradient(103.64% 57.39% at 14.02% 32.06%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%)",
         }}
       >
-        <h1 className="font-roadRage banner-head text-[50px] md:text-[62px]">
+        <h1 className="text-3xl md:text-5xl font-roadRage">
           Techember Fest ”25
         </h1>
-        <p className="text-gray-300 text-sm mt-2 text-center items-center">
-          Join us for an unforgettable experience at [Event Name]! Secure your
+        <p className="text-gray-300 text-sm mt-2">
+          Join us for an unforgettable experience! at [Event Name]! Secure your
           spot now.
         </p>
-        <p className="text-gray-600 text-sm mt-2 justify-center items-center text-center">
+        <p className="text-gray-600 text-sm mt-2">
           📍 [Event Location] || March 15, 2025 | 7:00 PM{" "}
         </p>
       </div>
 
       <hr className="bg-[#07373F] h-[4px] rounded-sm" />
 
-      <div className="text-white font-roboto">
-        <p className="text-lg text-white mb-4">Select Ticket Type:</p>
+      <div className="w-full text-white font-mono">
+        <p className="text-lg mb-4">Select Ticket Type:</p>
       </div>
 
-      <div className="w-full sm:w-[556p] h-[142px] border rounded-[24px] flex flex-col gap-4 p-4 mb-20 justify-center items-center">
+      <div className="w-full flex flex-wrap justify-center gap-4">
         <TicketType />
-
-        {/* <div className="flex flex-row gap-4">
-          {[
-            { Value: "free", label: "Free - REGULAR ACCESS 20/92" },
-            { Value: "free", label: "$150 - VIP ACCESS 20/52" },
-            { Value: "free", label: "$150 - VIP ACCESS 20/92" },
-          ].map((ticket) => (
-            <label
-              key={ticket.value}
-              className="flex flex-col items-center justify-center w-[158px] h-[110px] rounded-lg border border-[#197686] bg-[#12464E] p-3 cursor-pointer hover:border-[#24A0B5] transition-all"
-            >
-              <input
-                type="radio"
-                name="ticketType"
-                value="free"
-                onChange={handleTicketTypeChange}
-                className="hidden"
-              />
-
-              <span className="text-white text-sm text-center">
-                {ticket.label}
-              </span>
-            </label>
-          ))}
-        </div> */}
       </div>
 
-      <div className="items-center justify-center w-full">
+      <div className="w-full flex justify-center">
         <TicketForm
           numTickets={numTickets}
           handleNumTicketsChange={handleNumTicketsChange}
@@ -119,16 +93,11 @@ const TicketSelection = () => {
           </label>
         */}
 
-      <div className="flex flex-row space-x-20 justify-center items-center">
-        <button
-          className="w-full sm:w-[266px] h-12 border rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center
-        justify-center gap2 border-[#24A0B5] bg-transparent text-[#24a0b5] hover:bg-[#24A0B5]
-        hover:text-white transiton-all cursor-pointer
-        "
-        >
+      <div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-10 justify-center">
+        <button className="w-full sm:w-1/2 h-12 border rounded-lg flex items-center justify-center text-[#24A0B5] border-[#24A0B5] bg-transparent hover:bg-[#24A0B5] hover:text-white transition-all">
           <span className="text-base font-medium font-mono">Cancel</span>
         </button>
-        <button className="cursor-pointer w-full sm:w-[266px] h-12 rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center justify-center gap-2 border border-[#07373F] bg-[#24A0B5] text-white hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-all">
+        <button className="w-full sm:w-1/2 h-12 rounded-lg flex items-center justify-center bg-[#24A0B5] text-white border border-[#07373F] hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-al">
           <span className="text-base font-medium font-mono text-[#ffffff]">
             Next
           </span>

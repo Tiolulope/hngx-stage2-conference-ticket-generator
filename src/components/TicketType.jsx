@@ -6,15 +6,15 @@ const TicketType = () => {
   ];
 
   return (
-    <div className="flex flex-row space-x-2 absolute">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl mx-auto p-4">
       {" "}
       {ticketData.map((item) => (
         <div
           key={item.id}
-          className="flex flex-row items-center justify-center w-[158px] h-[110px] rounded-lg border border-[#197686] bg-[#12464E] p-3 cursor-pointer hover:border-[#24A0B5] transition-all space-x-0.5"
+          className="flex flex-col items-center justify-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] h-[120px] rounded-lg border border-[#197686] bg-[#12464E] p-4 cursor-pointer hover:border-[#24A0B5] transition-all text-white text-center"
         >
-          <p>{item.price}</p>
-          <p>{item.label}</p>
+          <p className="text-lg font-bold">{item.price}</p>
+          <p className="text-sm">{item.label}</p>
         </div>
       ))}
     </div>

@@ -1,71 +1,69 @@
 const AttendeeDetails = () => {
   return (
-    <div
-      id="Attende-Details"
-      className="items-center mt-10 w-[100%] bg-[#08252B] ms:bg-[#041E23]
-     p-[24px] border-[#197686] border-[1px] ms:w-[60%] md:w-[55%] md:p-[48px] rounded-2xl space-x-10 space-y-6"
-    >
-      <section className="flex-col justify-center items-center space-y-3">
-        <div className="text-white md:flex md:justify-between md:items-center">
-          <h1 className="text-[24px] md:text-[32px] sm:text-3xl  text-white font-mono">
-            Attendee Details
-          </h1>
+    <div className="w-full max-w-3xl mx-auto mt-10 bg-[#08252B] p-6 md:p-10 border border-[#197686] rounded-2xl">
+      <section className="flex flex-col space-y-3">
+        <div className="flex flex-col md:flex-row justify-between items-center text-white">
+          <h1 className="text-2xl md:text-3xl font-mono">Attendee Details</h1>
           <span>
-            <p className="text-gray-300 mt-2 flex-row ml-96">Step 2/3</p>
+            <p className="text-gray-300 text-sm md:text-base mt-2 md:mt-0">
+              Step 2/3
+            </p>
           </span>
         </div>
         <div className="bg-[#13bcd6] h-[4px] rounded-sm w-[100%]"></div>
       </section>
+
       <div
-        className="banner min-h-[243px]  p-[10px] md:p-[24px] text-white text-center text-[14px] flex-col justify-center items-center space-y-4"
+        className="w-full min-h-[200px] p-4 md:p-6 text-white text-center flex items-center justify-center rounded-lg mt-6"
         style={{
           background:
             "linear-gradient(0deg, rgba(10, 12, 17, 0.1), rgba(10, 12, 17, 0.1)), radial-gradient(103.64% 57.39% at 14.02% 32.06%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%)",
         }}
-      ></div>
-      <hr className="bg-[#07373F] h-[4px] rounded-sm" />
+      >
+        <img src="" alt="" />
+      </div>
+      <hr className="bg-[#07373F] h-[4px] rounded-sm my-6" />
 
       {/* //Attendee Info //Name */}
 
-      <div className="text-white font-roboto">
-        <label htmlFor="">
-          <p className="text-lg text-white mb-4">Enter your name</p>
-        </label>
-        <form>
+      <div className="space-y-6">
+        <div className="text-white">
+          <label htmlFor="name" className="block text-lg mb-2 font-roboto">
+            Enter your name
+          </label>
           <input
             type="text"
             placeholder="John Doe"
-            className="w-full border rounded-[15px] flex p-4 mb-20 justify-center text-[#ffffff] items-center space-x-96"
+            className="w-full p-3 border border-[#197686] rounded-lg bg-transparent text-white outline-none focus:border-[#24A0B5] transition-all"
           />
-        </form>
+        </div>
       </div>
 
       {/* Email */}
-      <div className="text-white font-roboto">
-        <label htmlFor="">
-          <p className="text-lg text-white mb-4">Enter your Email</p>
+      <div className="text-white">
+        <label htmlFor="email" className="block text-lg mb-2 font-roboto">
+          Enter your Email
         </label>
-        <form>
+        <div className="flex items-center border border-[#197686] rounded-lg p-3">
+          <img src="/icon.png" alt="gmail-logo" className="w-5 h-5 mr-3" />
           <input
-            type="text"
+            id="email"
+            type="email"
             placeholder="hello@avioflagos.io"
-            className="w-full border rounded-[15px] flex p-4 mb-20 justify-center text-[#ffffff] items-center space-x-96"
+            className="flex-1 bg-transparent text-white outline-none"
           />
-        </form>
+        </div>
       </div>
 
       {/* message */}
-      <div className="text-white font-roboto">
-        <label htmlFor="">
-          <p className="text-lg text-white mb-4">Send Request</p>
+      <div className="text-white">
+        <label htmlFor="request" className="block text-lg mb-2">
+          Send Request
         </label>
-
         <textarea
-          name="textarea"
           id="request"
-          className="w-full border rounded-[15px] flex p-4 mb-20 justify-center text-[#ffffff]
-           items-center space-x-96"
-          placeholder="Textarea"
+          className="w-full mb-10 p-3 border border-[#197686] rounded-lg bg-transparent text-white outline-none focus:border-[#24A0B5] transition-all"
+          placeholder="Your Requests Messages...."
         ></textarea>
 
         {/* <form>
@@ -76,16 +74,14 @@ const AttendeeDetails = () => {
           />
         </form> */}
       </div>
-      <div className="flex flex-row space-x-20 justify-center items-center">
-        <button
-          className="w-full sm:w-[266px] h-12 border rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center
-        justify-center gap2 border-[#24A0B5] bg-transparent text-[#24a0b5] hover:bg-[#24A0B5]
-        hover:text-white transiton-all cursor-pointer
-        "
-        >
-          <span className="text-base font-medium font-mono">Back</span>
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mt-6">
+        <button className="w-full md:w-1/2 h-12 border rounded-lg flex items-center justify-center border-[#24A0B5] bg-transparent text-[#24A0B5] hover:bg-[#24A0B5] hover:text-white transition-all">
+          <span className="text-base font-medium font-mono cursor-pointer">
+            Back
+          </span>
         </button>
-        <button className="w-full sm:w-[266px] h-12 rounded-lg pt-3 pr-4 pb-3 pl-4 flex items-center justify-center gap-2 border border-[#07373F] bg-[#24A0B5] text-white hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-all">
+
+        <button className="w-full md:w-1/2 h-12 rounded-lg flex items-center justify-center border border-[#07373F] bg-[#24A0B5] text-white hover:bg-[#0a4a54] hover:border-[#0a4a54] transition-all">
           <span className="text-base font-medium font-mono text-[#ffffff] cursor-pointer">
             Get My Free Ticket
           </span>
