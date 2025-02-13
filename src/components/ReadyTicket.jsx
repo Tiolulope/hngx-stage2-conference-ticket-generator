@@ -2,35 +2,32 @@
 
 const ReadyTicket = () => {
   return (
-    <div
-      className="items-center mt-10 w-[100%] bg-[#08252B] ms:bg-[#041E23]
-     p-[24px] border-[#197686] border-[1px] ms:w-[60%] md:w-[55%] md:p-[48px]
-    rounded-2xl space-x-10 space-y-6"
-    >
-      <section className="flex-col justify-center items-center space-y-3">
-        <div className="text-white md:flex md:justify-between md:items-center">
-          <h1 className="text-[24px] md:text-[32px] sm:text-3xl  text-white font-mono">
-            Ready
-          </h1>
+    <div className="w-full max-w-3xl mx-auto mt-10 bg-[#08252B] p-6 md:p-10 border border-[#197686] rounded-2xl text-white">
+      <section className="flex flex-col space-y-3">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <h1 className="text-2xl md:text-3xl font-mono">Ready</h1>
           <span>
-            <p className="text-gray-300 mt-2 flex-row ml-96">Step 3/3</p>
+            <p className="text-gray-300 text-sm md:text-base mt-2 md:mt-0">
+              Step 3/3
+            </p>
           </span>
         </div>
+
         <div className="bg-[#13bcd6] h-[4px] rounded-sm w-[100%]"></div>
       </section>
 
-      <div className="mt-10">
-        <div className="font-bold justify-center items-center">
-          <h1 className="text-[32px] text-[#ffffff] text-center font-Alatsi">
-            Your Ticket is Booked!
-          </h1>
-        </div>
+      <div className="mt-10 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold font-Alasti">
+          Your Ticket is Booked!
+        </h1>
 
-        <div className="mt-10">
-          <p className="text-gray-300 text-center">
+        <div className="">
+          <p className="text-gray-300 mt-6">
             Check your email for a copy or you can{" "}
             <span>
-              <b>download</b>
+              <b className="text-white cursor-pointer hover:underline">
+                download
+              </b>
             </span>
           </p>
         </div>
