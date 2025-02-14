@@ -1,5 +1,5 @@
 // import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 
 import AttendeeDetails from "./components/AttendeeDetails";
 import NavBar from "./components/NavBar";
@@ -7,6 +7,7 @@ import ReadyTicket from "./components/ReadyTicket";
 import TicketSelection from "./components/TicketSelection";
 // import TicketForm from "./components/TicketForm";
 import { TicketProvider } from "./components/TicketContext";
+import AboutPage from "./components/AboutPage";
 
 const App = () => {
   return (
@@ -25,11 +26,7 @@ const App = () => {
               <Route path="/" element={<TicketSelection />} />
               <Route path="/attendee-details" element={<AttendeeDetails />} />
               <Route path="/ready-ticket" element={<ReadyTicket />} />
-              {/* 
-            
-            <TicketSelection />
-            <AttendeeDetails />
-            <ReadyTicket /> */}
+              <Route path="/about-page" element={<AboutPage />} />
             </Routes>
           </div>
         </div>

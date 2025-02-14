@@ -1,94 +1,217 @@
-import { useEffect, useRef } from "react";
-import JsBarcode from "jsbarcode";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import barCode from "../assets/barCode.svg";
+import locationPin from "../assets/locationPin.svg";
+import calendar from "../assets/calendar.svg";
 
-const ReadyTicket = () => {
-  const barcodeRef = useRef(null);
-  const ticketRef = useRef(null); // Reference for the ticket container
+localStorage.setItem(
+  "attendeeDetails",
+  JSON.stringify({
+    name: "John Doe",
+    email: "johndoe@email.com",
+    message: "No special requests",
+    imageUrl: "https://via.placeholder.com/150",
+  })
+);
+
+localStorage.setItem(
+  "ticketSelection",
+  JSON.stringify({
+    ticket: { type: "VIP Ticket" },
+    quantity: 1,
+  })
+);
+
+localStorage.setItem(
+  "attendeeDetails",
+  JSON.stringify({
+    name: "Test User",
+    email: "test@example.com",
+    imageUrl: "",
+    message: "No requests",
+  })
+);
+localStorage.setItem(
+  "ticketSelection",
+  JSON.stringify({
+    ticket: { type: "General Admission" },
+    quantity: 2,
+  })
+);
+// window.location.reload();
+
+const TicketReady = () => {
+  const navigate = useNavigate();
+  const [attendee, setAttendee] = useState(null);
+  const [selectedTicket, setSelectedTicket] = useState(null);
+
+  const handleSubmit = () => {
+    localStorage.setItem("attendeeDetails", JSON.stringify(attendeeData));
+    localStorage.setItem("ticketSelection", JSON.stringify(ticketData));
+    navigate("/ticket-ready");
+  };
 
   useEffect(() => {
-    if (barcodeRef.current) {
-      try {
-        JsBarcode(barcodeRef.current, "123456789", {
-          format: "CODE128",
-          lineColor: "#000", // Black barcode lines
-          background: "#fff", // White background
-          width: 2,
-          height: 50,
-          displayValue: true, // Show ticket number
-        });
-      } catch (error) {
-        console.log("Barcode generation error!", error);
-      }
+    const storedDetails = localStorage.getItem("attendeeDetails");
+    const savedTicket = localStorage.getItem("ticketSelection");
+
+    console.log("Stored Details:", storedDetails);
+    console.log("Saved Ticket:", savedTicket);
+
+    if (storedDetails && savedTicket) {
+      setAttendee(JSON.parse(storedDetails));
+      setSelectedTicket(JSON.parse(savedTicket));
+    } else {
+      navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
-  // Function to generate and download PDF
-  const downloadPDF = () => {
-    const ticketElement = ticketRef.current;
-
-    html2canvas(ticketElement, { scale: 2 }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4"); // Portrait, millimeters, A4 size
-
-      pdf.addImage(imgData, "PNG", 10, 10, 190, 100); // Position and size
-      pdf.save("ticket.pdf"); // Download as 'ticket.pdf'
-    });
+  const handleDownload = () => {
+    const element = document.createElement("a");
+    const file = new Blob(
+      [JSON.stringify({ attendee, selectedTicket }, null, 2)],
+      { type: "text/plain" }
+    );
+    element.href = URL.createObjectURL(file);
+    element.download = "ticket_details.txt";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto mt-10 bg-[#08252B] p-6 md:p-10 border border-[#197686] rounded-2xl text-white">
-      <section className="flex flex-col space-y-3">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-2xl md:text-3xl font-mono">Ready</h1>
-          <span>
-            <p className="text-gray-300 text-sm md:text-base mt-2 md:mt-0">
-              Step 3/3
-            </p>
-          </span>
-        </div>
-        <div className="bg-[#13bcd6] h-[4px] rounded-sm w-[100%]"></div>
-      </section>
+    <div className="max-w-2xl mx-auto p-4 sm:p-6 bg-[#041E23] text-white rounded-2xl border border-[#197686]">
+      <div className="flex justify-between">
+        <p className="text-xl font-light mb-2 JejuMyeongjo">Ready</p>
+        <p>Step 3/3</p>
+      </div>
+      <div className="loading-bar mb-6">
+        <div className="filled-bar w-full bg-[#197686] h-1"></div>
+      </div>
 
-      <div className="mt-10 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold font-Alatsi">
+      <div className="text-center my-6 sm:my-10 flex flex-col gap-3">
+        <p className="text-2xl sm:text-3xl font-semibold alatsi-regular">
           Your Ticket is Booked!
-        </h1>
-        <p className="text-gray-300 mt-6">
-          Check your email for a copy or{" "}
-          <b
-            className="text-white cursor-pointer hover:underline"
-            onClick={downloadPDF}
-          >
-            download
-          </b>
         </p>
+        <p className="text-sm sm:text-base">
+          Check your email for a copy or{" "}
+          <span className="font-bold cursor-pointer" onClick={handleDownload}>
+            download
+          </span>
+        </p>
+      </div>
 
-        {/* Ticket Container for PDF Export */}
-        <div
-          ref={ticketRef}
-          className="bg-white text-black p-6 rounded-md mt-6"
-        >
-          <h2 className="text-xl font-bold">Techember Fest &apos 25</h2>
-          <p className="text-sm">
-            📍 [Event Location] || March 15, 2025 | 7:00 PM
-          </p>
-          <p className="text-sm">Ticket ID: 123456789</p>
-          {/* Barcode */}
-          <svg ref={barcodeRef} className="mx-auto mt-4"></svg>
+      <div className="box p-4 sm:p-6 max-w-lg mx-auto rounded-xl ticketBg">
+        <div className="border-2 border-[#24A0B5] rounded-2xl p-4 sm:p-6">
+          <div className="text-center flex flex-col gap-2">
+            <p className="road-rage-regular text-3xl sm:text-5xl">
+              Techember Fest &apos;&apos;25
+            </p>
+            <div className="flex justify-center items-center gap-1">
+              <img src={locationPin} alt="Location" width={15} />
+              <p className="text-gray-300 text-sm sm:text-base">
+                [Event Location]
+              </p>
+            </div>
+            <div className="flex justify-center items-center gap-1">
+              <img src={calendar} alt="Date" width={15} />
+              <p className="text-gray-300 text-sm sm:text-base">
+                March 15, 2025 | 7:00 PM
+              </p>
+            </div>
+          </div>
+
+          {attendee && selectedTicket && (
+            <div className="mt-6">
+              <img
+                src={attendee.imageUrl || "https://via.placeholder.com/150"}
+                alt="Profile"
+                className="w-40 h-40 rounded-lg mx-auto border-4 border-[#24A0B5] object-cover"
+              />
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-[#08343C] rounded-xl mt-4">
+                  <tbody>
+                    <tr className="border-b border-[#133D44]">
+                      <td className="pl-3 pr-3 pt-3 pb-1 border-r border-[#133D44] w-1/2">
+                        <div className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Name:
+                        </div>
+                        <div className="text-sm sm:text-base font-semibold">
+                          {attendee.name}
+                        </div>
+                      </td>
+                      <td className="pl-3 pr-3 pt-3 pb-1 w-1/2">
+                        <div className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Email:
+                        </div>
+                        <div className="text-sm sm:text-base font-semibold">
+                          {attendee.email}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="border-b border-[#133D44]">
+                      <td className="pl-3 pr-3 pt-3 pb-1 border-r border-[#133D44] w-1/2">
+                        <div className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Ticket Type:
+                        </div>
+                        <div className="text-sm sm:text-base font-light">
+                          {selectedTicket?.ticket?.type?.split(" ")[0] || "N/A"}
+                        </div>
+                      </td>
+                      <td className="pl-3 pr-3 pt-3 pb-1 w-1/2">
+                        <div className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Ticket For:
+                        </div>
+                        <div className="text-sm sm:text-base font-light">
+                          {selectedTicket.quantity}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} className="pl-3 pr-3 pt-3 pb-1">
+                        <div className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Special Request?
+                        </div>
+                        <div className="text-sm sm:text-base font-light">
+                          {attendee?.message || "N/A"}
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
 
-        {/* Download PDF Button */}
+      <div className="w-[85%] md:w-[74%] h-[3px] border-1 border-dashed border-[#197686] rounded-lg mx-auto my-0"></div>
+
+      <div className="box p-4 sm:p-6 max-w-lg mx-auto ticketBg flex justify-center rounded-xl">
+        <img src={barCode} alt="Barcode" className="w-[90%]" />
+      </div>
+
+      <div className="JejuMyeongjo text-sm flex flex-col-reverse sm:flex-row gap-4 mt-6 sm:mt-10">
         <button
-          onClick={downloadPDF}
-          className="mt-6 px-6 py-3 bg-[#24A0B5] text-white rounded-lg hover:bg-[#0a4a54] transition-all"
+          className="cursor-pointer w-full sm:w-[48%] bg-transparent border-[1px] border-[#24A0B5] hover:text-white py-3 rounded-lg hover:bg-[#197686] text-[#24A0B5]"
+          onClick={() => {
+            localStorage.removeItem("attendeeDetails");
+            localStorage.removeItem("ticketSelection");
+            navigate("/");
+          }}
         >
-          Download Ticket PDF
+          Book Another Ticket
+        </button>
+
+        <button
+          className="cursor-pointer w-full sm:w-[48%] bg-[#197686] border-[1px] border-[#24A0B5] text-white py-3 rounded-lg hover:bg-transparent hover:text-[#197686] disabled:bg-gray-500"
+          onClick={handleDownload}
+        >
+          Download Ticket
         </button>
       </div>
     </div>
   );
 };
 
-export default ReadyTicket;
+export default TicketReady;

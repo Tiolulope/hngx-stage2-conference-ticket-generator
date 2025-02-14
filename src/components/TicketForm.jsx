@@ -5,8 +5,11 @@ const TicketForm = ({ numTickets, setNumTickets }) => {
     setNumTickets(Number(e.target.value));
   };
   return (
-    <div className="w-full flex flex-col space-y-2">
-      <label htmlFor="ticketCount" className="text-white text-lg font-roboto">
+    <div className="my-4 w-full flex flex-col space-y-2 font-light">
+      <label
+        htmlFor="ticketCount"
+        className="block text-white text-lg font-roboto mb-2"
+      >
         Number of Tickets:
       </label>
 
@@ -21,5 +24,26 @@ const TicketForm = ({ numTickets, setNumTickets }) => {
     </div>
   );
 };
+
+{
+  /* <div className="my-4">
+        <label className="block text-sm sm:text-base mb-2 font-light">
+          Number of Tickets:
+        </label>
+        <Select
+          options={quantityOptions}
+          value={
+            quantity ? { value: quantity, label: quantity.toString() } : null
+          }
+          onChange={(selectedOption) => {
+            setQuantity(selectedOption.value);
+            setQuantityError("");
+          }}
+          styles={customStyles}
+          menuPlacement="bottom"
+        />
+        {quantityError && <p className="text-red-500 mt-2">{quantityError}</p>}
+      </div> */
+}
 
 export default TicketForm;
