@@ -22,22 +22,22 @@ localStorage.setItem(
   })
 );
 
-localStorage.setItem(
-  "attendeeDetails",
-  JSON.stringify({
-    name: "Test User",
-    email: "test@example.com",
-    imageUrl: "",
-    message: "No requests",
-  })
-);
-localStorage.setItem(
-  "ticketSelection",
-  JSON.stringify({
-    ticket: { type: "General Admission" },
-    quantity: 2,
-  })
-);
+// localStorage.setItem(
+//   "attendeeDetails",
+//   JSON.stringify({
+//     name: "Test User",
+//     email: "test@example.com",
+//     imageUrl: "",
+//     message: "No requests",
+//   })
+// );
+// localStorage.setItem(
+//   "ticketSelection",
+//   JSON.stringify({
+//     ticket: { type: "General Admission" },
+//     quantity: 2,
+//   })
+// );
 // window.location.reload();
 
 const TicketReady = () => {
@@ -105,7 +105,7 @@ const TicketReady = () => {
         <div className="border-2 border-[#24A0B5] rounded-2xl p-4 sm:p-6">
           <div className="text-center flex flex-col gap-2">
             <p className="road-rage-regular text-3xl sm:text-5xl">
-              Techember Fest &apos;&apos;25
+              Techember Fest &apos;25
             </p>
             <div className="flex justify-center items-center gap-1">
               <img src={locationPin} alt="Location" width={15} />

@@ -96,7 +96,7 @@ const AboutPage = () => {
           <li>PaymentModal.tsx → Handles payment processing</li>
           <li>SuccessScreen.tsx → Shows the final ticket preview</li>
           <li>
-            State Management: React&aposs Context API, Zustand, or Redux (if
+            State Management: React&apos;s Context API, Zustand, or Redux (if
             needed).
           </li>
           <li>
@@ -109,7 +109,7 @@ const AboutPage = () => {
 
       <section className="mb-8">
         <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-          What You &apos ll Learn 🧑‍💻
+          What You &apos; ll Learn 🧑‍💻
         </h2>
         <ul className="list-disc list-inside text-gray-300 leading-relaxed">
           <li>File handling & validation (profile picture uploads).</li>
@@ -126,7 +126,7 @@ const AboutPage = () => {
         💛 Enjoy
       </p>
 
-      <div>
+      <div className="text-xs sm:text-sm text-center flex flex-col-reverse sm:flex-row justify-center gap-4 mt-6 sm:mt-10 border-2 border-[#0E464F] rounded-2xl p-4">
         {" "}
         <a
           href="https://www.figma.com/community/file/1470800949188681164/event-ticket-booking-ui-open-source-practice-project"

@@ -15,9 +15,8 @@ body {
   font-family: "Roboto", serif;
 }
 @media (max-width: 640px) {
-  /* Adjust for small screens */
   body {
-    padding: 1rem; /* Adjust padding as needed */
+    padding: 1rem;
   }
 }
 

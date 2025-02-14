@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useTicket } from "./TicketContext";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { CloudDownload, Icon, icons, Mail } from "lucide-react";
+import { CloudDownload, Mail } from "lucide-react";
 
 const AttendeeDetails = () => {
   const navigate = useNavigate();
@@ -152,7 +152,6 @@ const AttendeeDetails = () => {
           ></textarea>
         </div>
 
-        {/* Navigation Buttons */}
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mt-6">
           <button
             type="button"

@@ -24,7 +24,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/printOut"
+            to="/ready-ticket"
             className={({ isActive }) =>
               `transition-colors duration-200 hover:text-white ${
                 isActive ? "text-white" : ""
@@ -36,7 +36,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/about-project"
+            to="/about-page"
             className={({ isActive }) =>
               `transition-colors duration-200 hover:text-white ${
                 isActive ? "text-white" : ""
@@ -50,7 +50,7 @@ const Navbar = () => {
 
       <button
         className="p-2 bg-white border border-[#197686] flex justify-center items-center gap-1 rounded-xl w-36 text-black shadow-md transition-all hover:bg-[#197686] hover:text-white active:scale-95 cursor-pointer font-light"
-        onClick={() => navigate("/printOut")}
+        onClick={() => navigate("/ready-ticket")}
       >
         MY TICKETS <MoveRight size={20} />
       </button>

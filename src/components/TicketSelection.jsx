@@ -7,7 +7,6 @@ import TicketType from "./TicketType";
 import TicketForm from "./TicketForm";
 import { useTicket } from "./TicketContext";
 import { useEffect, useState } from "react";
-import Select from "react-select";
 
 const TicketSelection = () => {
   const [selectedTicket, setSelectedTicket] = useState(null);
