@@ -25,25 +25,4 @@ const TicketForm = ({ numTickets, setNumTickets }) => {
   );
 };
 
-{
-  /* <div className="my-4">
-        <label className="block text-sm sm:text-base mb-2 font-light">
-          Number of Tickets:
-        </label>
-        <Select
-          options={quantityOptions}
-          value={
-            quantity ? { value: quantity, label: quantity.toString() } : null
-          }
-          onChange={(selectedOption) => {
-            setQuantity(selectedOption.value);
-            setQuantityError("");
-          }}
-          styles={customStyles}
-          menuPlacement="bottom"
-        />
-        {quantityError && <p className="text-red-500 mt-2">{quantityError}</p>}
-      </div> */
-}
-
 export default TicketForm;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Select from "react-select";
+// import Select from "react-select";
 
 const TicketType = () => {
   const [selectedTicket, setSelectedTicket] = useState(null);
@@ -37,7 +37,7 @@ const TicketType = () => {
         {ticketData.map((ticketdata) => (
           <button
             key={ticketdata.id}
-            className={`cursor-pointer flex flex-col p-2 border-2 rounded-lg transition-all border-[#197686] ${
+            className={`cursor-pointer flex flex-col p-2 border-2 text-white  rounded-lg transition-all border-[#197686] ${
               selectedTicket?.label === ticketdata.label
                 ? "bg-[#12464E]"
                 : "bg-[#041E23]"
