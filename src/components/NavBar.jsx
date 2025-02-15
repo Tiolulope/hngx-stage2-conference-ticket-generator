@@ -7,7 +7,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <nav className="JejuMyeongjo p-3 flex justify-between items-center w-[90vw] rounded-2xl mx-auto my-4 navBarBg">
-      <img src={ticzLogo} alt="ticzLogo" />
+      <button onClick={() => navigate("/")} className="cursor-pointer">
+        <img src={ticzLogo} alt="ticzLogo" to="/" />
+      </button>
 
       <ul className="hidden md:flex gap-6 text-[#B3B3B3] text-base">
         <li>

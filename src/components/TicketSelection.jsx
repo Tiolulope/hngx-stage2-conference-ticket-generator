@@ -99,7 +99,7 @@ const TicketSelection = () => {
           Join us for an unforgettable experience! at [Event Name]! Secure your
           spot now.
         </p>
-        <p className="text-gray-600 text-sm mt-2">
+        <p className="text-white text-sm mt-2">
           📍 [Event Location] || March 15, 2025 | 7:00 PM{" "}
         </p>
       </div>
